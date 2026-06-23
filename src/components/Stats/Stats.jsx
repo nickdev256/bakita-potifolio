@@ -35,7 +35,7 @@ return ( <section className="stats-section">
 
       <h3>02+</h3>
 
-      <h4>YEARS OF STUDY</h4>
+      <h4>Year Of Study </h4>
 
       <p>
         Pursuing excellence in legal education.
@@ -49,7 +49,7 @@ return ( <section className="stats-section">
 
       <h3>10+</h3>
 
-      <h4>RESEARCH PAPERS</h4>
+      <h4>Research Papers</h4>
 
       <p>
         Legal research on emerging issues and reforms.
@@ -63,7 +63,7 @@ return ( <section className="stats-section">
 
       <h3>05+</h3>
 
-      <h4>MOOT COURT EVENTS</h4>
+      <h4>Moot Court Events</h4>
 
       <p>
         Advocacy, argumentation and legal competitions.
@@ -77,7 +77,7 @@ return ( <section className="stats-section">
 
       <h3>15+</h3>
 
-      <h4>COMMUNITY PROJECTS</h4>
+      <h4>Community Projects</h4>
 
       <p>
         Creating awareness and impact through service.
