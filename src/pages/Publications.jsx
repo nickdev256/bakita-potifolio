@@ -1,238 +1,338 @@
-
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
 import {
-  FaBookOpen,
-  FaArrowRight,
-  FaBalanceScale,
-  FaShieldAlt,
-  FaLaptopCode,
-  FaGlobeAfrica,
-  FaGavel
+FaBookOpen,
+FaArrowRight,
+FaBalanceScale,
+FaShieldAlt,
+FaLaptopCode,
+FaGlobeAfrica,
+FaGavel,
 } from "react-icons/fa";
 
 import "./Publications.css";
 
 function Publications() {
-  const [publications, setPublications] = useState([]);
-  const [featured, setFeatured] = useState(null);
+const [publications, setPublications] =
+useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/publications")
-      .then((res) => res.json())
-      .then((data) => {
-        setPublications(data);
+const [featured, setFeatured] =
+useState(null);
 
-        const featuredPublication =
-          data.find((item) => item.featured);
+const API_URL =
+import.meta.env.VITE_API_URL ||
+"http://localhost:5000";
 
-        if (featuredPublication) {
-          setFeatured(featuredPublication);
-        }
-      })
-      .catch((error) =>
-        console.error(error)
+useEffect(() => {
+fetch(
+`${API_URL}/api/publications`
+)
+.then((res) => res.json())
+.then((data) => {
+const publicationsData =
+Array.isArray(data)
+? data
+: [];
+
+
+    setPublications(
+      publicationsData
+    );
+
+    const featuredPublication =
+      publicationsData.find(
+        (item) =>
+          item.featured === true
       );
-  }, []);
 
-  return (
-    <>
-      <Navbar />
+    if (featuredPublication) {
+      setFeatured(
+        featuredPublication
+      );
+    }
+  })
+  .catch((error) =>
+    console.error(error)
+  );
 
-      <section className="publications-hero">
 
-        <div className="publications-left">
+}, []);
 
-          <span>LEGAL PUBLICATIONS</span>
+return (
+<> <Navbar />
 
-          <h1>
-            Research.
-            <br />
-            Analysis.
-            <br />
-            <span>Advocacy.</span>
-          </h1>
+```
+  <section className="publications-hero">
 
-          <p>
-            Exploring contemporary legal issues
-            through research, critical analysis
-            and a commitment to justice.
-          </p>
+    <div className="publications-left">
+
+      <span>
+        LEGAL PUBLICATIONS
+      </span>
+
+      <h1>
+        Research.
+        <br />
+        Analysis.
+        <br />
+        <span>
+          Advocacy.
+        </span>
+      </h1>
+
+      <p>
+        Exploring contemporary
+        legal issues through
+        research, critical
+        analysis and a commitment
+        to justice.
+      </p>
+
+    </div>
+
+    <div className="publications-right">
+
+      <img
+        src="/publications-hero.jpg"
+        alt="Legal Publications"
+      />
+
+    </div>
+
+  </section>
+
+  {featured && (
+
+    <section className="featured-publication">
+
+      <div className="featured-label">
+
+        <FaBookOpen />
+
+        <h4>
+          Featured Research
+        </h4>
+
+      </div>
+
+      <div className="featured-image">
+
+        <img
+          src={
+            featured.image_url
+          }
+          alt={featured.title}
+        />
+
+      </div>
+
+      <div className="featured-content">
+
+        <h2>
+          {featured.title}
+        </h2>
+
+        <p>
+          {
+            featured.description
+          }
+        </p>
+
+        <Link
+          to={`/publications/${featured.id}`}
+          className="read-btn"
+        >
+          Read Publication
+
+          <FaArrowRight />
+        </Link>
+
+      </div>
+
+      <div className="featured-meta">
+
+        <div className="meta-item">
+
+          <strong>
+            Category
+          </strong>
+
+          <span>
+            {
+              featured.category
+            }
+          </span>
 
         </div>
 
-        <div className="publications-right">
+        <div className="meta-item">
 
-          <img
-            src="/publications-hero.jpg"
-            alt="Legal Publications"
-          />
+          <strong>
+            Year
+          </strong>
+
+          <span>
+            {
+              featured.publication_year
+            }
+          </span>
 
         </div>
 
-      </section>
+        <div className="meta-item">
 
-      {featured && (
+          <strong>
+            Status
+          </strong>
 
-        <section className="featured-publication">
+          <span>
+            {
+              featured.status
+            }
+          </span>
 
-          <div className="featured-label">
+        </div>
+
+      </div>
+
+    </section>
+
+  )}
+
+  <section className="publications-section">
+
+    <div className="section-header">
+
+      <span>
+        PUBLICATIONS
+      </span>
+
+      <h2>
+        Research Papers &
+        Articles
+      </h2>
+
+    </div>
+
+    <div className="publications-grid">
+
+      {publications.map(
+        (publication) => (
+
+          <div
+            key={
+              publication.id
+            }
+            className="publication-card"
+          >
+
             <FaBookOpen />
-            <h4>Featured Research</h4>
-          </div>
 
-          <div className="featured-image">
-
-            <img
-              src={featured.image_url}
-              alt={featured.title}
-            />
-
-          </div>
-
-          <div className="featured-content">
-
-            <h2>
-              {featured.title}
-            </h2>
+            <h3>
+              {
+                publication.title
+              }
+            </h3>
 
             <p>
-              {featured.description}
+              {
+                publication.description
+              }
             </p>
 
-            <button>
-              Read Publication
-              <FaArrowRight />
-            </button>
+            <Link
+              to={`/publications/${publication.id}`}
+              className="read-more"
+            >
+              Read More
+            </Link>
 
           </div>
-
-          <div className="featured-meta">
-
-            <div className="meta-item">
-              <strong>Category</strong>
-              <span>{featured.category}</span>
-            </div>
-
-            <div className="meta-item">
-              <strong>Year</strong>
-              <span>{featured.publication_year}</span>
-            </div>
-
-            <div className="meta-item">
-              <strong>Status</strong>
-              <span>{featured.status}</span>
-            </div>
-
-          </div>
-
-        </section>
-
+        )
       )}
 
-      <section className="publications-section">
+    </div>
 
-        <div className="section-header">
+  </section>
 
-          <span>PUBLICATIONS</span>
+  <section className="research-interests">
 
-          <h2>
-            Research Papers & Articles
-          </h2>
+    <div className="interest-box">
 
+      <h2>
+        Research Interests
+      </h2>
+
+      <div className="interest-grid">
+
+        <div>
+          <FaBalanceScale />
+          <p>
+            Constitutional
+            Law
+          </p>
         </div>
 
-        <div className="publications-grid">
-
-          {publications.map((publication) => (
-
-            <div
-              key={publication.id}
-              className="publication-card"
-            >
-
-              <FaBookOpen />
-
-              <h3>
-                {publication.title}
-              </h3>
-
-              <p>
-                {publication.description}
-              </p>
-
-              <a href="#">
-                Read More
-              </a>
-
-            </div>
-
-          ))}
-
+        <div>
+          <FaShieldAlt />
+          <p>
+            Human Rights Law
+          </p>
         </div>
 
-      </section>
-
-      <section className="research-interests">
-
-        <div className="interest-box">
-
-          <h2>
-            Research Interests
-          </h2>
-
-          <div className="interest-grid">
-
-            <div>
-              <FaBalanceScale />
-              <p>Constitutional Law</p>
-            </div>
-
-            <div>
-              <FaShieldAlt />
-              <p>Human Rights Law</p>
-            </div>
-
-            <div>
-              <FaGlobeAfrica />
-              <p>Land Law</p>
-            </div>
-
-            <div>
-              <FaGavel />
-              <p>Commercial Law</p>
-            </div>
-
-            <div>
-              <FaLaptopCode />
-              <p>Technology & Law</p>
-            </div>
-
-          </div>
-
+        <div>
+          <FaGlobeAfrica />
+          <p>
+            Land Law
+          </p>
         </div>
 
-      </section>
+        <div>
+          <FaGavel />
+          <p>
+            Commercial Law
+          </p>
+        </div>
 
-      <section className="publication-quote">
+        <div>
+          <FaLaptopCode />
+          <p>
+            Technology &
+            Law
+          </p>
+        </div>
 
-        <blockquote>
-          “Research is the foundation of justice
-          and the pathway to meaningful change.”
-        </blockquote>
+      </div>
 
-        <span>
-          — Bakita Lydia Elizabeth
-        </span>
+    </div>
 
-      </section>
+  </section>
 
-      <Footer />
-    </>
-  );
+  <section className="publication-quote">
+
+    <blockquote>
+      “Research is the
+      foundation of justice
+      and the pathway to
+      meaningful change.”
+    </blockquote>
+
+    <span>
+      — Bakita Lydia
+      Elizabeth
+    </span>
+
+  </section>
+
+  <Footer />
+
+</>
+
+);
 }
 
 export default Publications;
-

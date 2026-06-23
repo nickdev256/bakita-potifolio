@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import AcademicJourney from "../pages/AcademicJourney";
 import Publications from "../pages/Publications";
+import PublicationDetails from "../pages/PublicationDetails";
 import MootCourt from "../pages/MootCourt";
 import CommunityImpact from "../pages/CommunityImpact";
 import Gallery from "../pages/Gallery";
@@ -40,6 +41,10 @@ function AppRoutes() {
         path="/publications"
         element={<Publications />}
       />
+<Route
+  path="/publications/:id"
+  element={<PublicationDetails />}
+/>
 
       <Route
         path="/moot-court"

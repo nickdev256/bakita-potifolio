@@ -1,0 +1,153 @@
+.publication-details {
+max-width: 1000px;
+margin: 100px auto;
+padding: 40px;
+background: #ffffff;
+border-radius: 24px;
+box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.publication-details img {
+width: 100%;
+height: 450px;
+object-fit: cover;
+border-radius: 18px;
+margin-bottom: 30px;
+}
+
+.publication-details h1 {
+font-size: 3rem;
+color: #1f2937;
+margin-bottom: 20px;
+line-height: 1.2;
+font-family: "Cormorant Garamond", serif;
+}
+
+.publication-meta {
+display: flex;
+gap: 15px;
+flex-wrap: wrap;
+margin-bottom: 30px;
+}
+
+.publication-meta span {
+background: #8b6f47;
+color: white;
+padding: 10px 18px;
+border-radius: 50px;
+font-size: 0.95rem;
+font-weight: 500;
+}
+
+.publication-description {
+font-size: 1.1rem;
+color: #4b5563;
+line-height: 1.8;
+margin-bottom: 35px;
+}
+
+.publication-content {
+font-size: 1.05rem;
+line-height: 2;
+color: #374151;
+white-space: pre-wrap;
+}
+
+.publication-content p {
+margin-bottom: 20px;
+}
+
+.back-btn {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 30px;
+text-decoration: none;
+background: #8b6f47;
+color: white;
+padding: 12px 22px;
+border-radius: 12px;
+transition: 0.3s ease;
+}
+
+.back-btn:hover {
+background: #755c39;
+transform: translateY(-2px);
+}
+
+.publication-loading {
+min-height: 60vh;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 1.2rem;
+color: #6b7280;
+}
+
+.publication-not-found {
+min-height: 60vh;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 1.3rem;
+color: #ef4444;
+}
+
+.publication-actions {
+display: flex;
+gap: 15px;
+margin-top: 40px;
+}
+
+.download-btn,
+.share-btn {
+border: none;
+cursor: pointer;
+padding: 14px 24px;
+border-radius: 12px;
+font-weight: 600;
+transition: 0.3s;
+}
+
+.download-btn {
+background: #8b6f47;
+color: white;
+}
+
+.download-btn:hover {
+background: #755c39;
+}
+
+.share-btn {
+background: #f3f4f6;
+color: #111827;
+}
+
+.share-btn:hover {
+background: #e5e7eb;
+}
+
+@media (max-width: 768px) {
+
+.publication-details {
+margin: 40px 15px;
+padding: 25px;
+}
+
+.publication-details img {
+height: 250px;
+}
+
+.publication-details h1 {
+font-size: 2rem;
+}
+
+.publication-meta {
+flex-direction: column;
+}
+
+.publication-actions {
+flex-direction: column;
+}
+
+}
