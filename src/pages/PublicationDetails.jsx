@@ -5,133 +5,200 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
 import {
-FaArrowLeft,
-FaCalendarAlt,
-FaFolderOpen,
-FaBookOpen,
+  FaArrowLeft,
+  FaCalendarAlt,
+  FaFolderOpen,
+  FaBookOpen,
+  FaQuoteLeft,
+  FaDownload,
 } from "react-icons/fa";
 
 import "./PublicationDetails.css";
 
 function PublicationDetails() {
-const { id } = useParams();
+  const { id } = useParams();
 
-const [publication, setPublication] =
-useState(null);
+  const [publication, setPublication] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-const [loading, setLoading] =
-useState(true);
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "http://localhost:5000";
 
-const API_URL =
-import.meta.env.VITE_API_URL ||
-"http://localhost:5000";
+  useEffect(() => {
+    fetch(`${API_URL}/api/publications/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setPublication(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, [id]);
 
-useEffect(() => {
-fetch(
-`${API_URL}/api/publications/${id}`
-)
-.then((res) => res.json())
-.then((data) => {
-setPublication(data);
-setLoading(false);
-})
-.catch((error) => {
-console.error(error);
-setLoading(false);
-});
-}, [id]);
+  if (loading) {
+    return (
+      <>
+        <Navbar />
 
-if (loading) {
-return (
-<> <Navbar />
+        <div className="publication-loading">
+          Loading Publication...
+        </div>
 
-```
-    <div className="publication-loading">
-      Loading Publication...
-    </div>
+        <Footer />
+      </>
+    );
+  }
 
-    <Footer />
-  </>
-);
+  if (!publication) {
+    return (
+      <>
+        <Navbar />
 
+        <div className="publication-loading">
+          Publication Not Found
+        </div>
 
-}
+        <Footer />
+      </>
+    );
+  }
 
-if (!publication) {
-return (
-<> <Navbar />
+  return (
+    <>
+      <Navbar />
 
+      <section className="publication-page">
 
-    <div className="publication-not-found">
-      Publication Not Found
-    </div>
+        <div className="publication-hero">
 
-    <Footer />
-  </>
-);
+          {publication.image_url && (
+            <img
+              src={publication.image_url}
+              alt={publication.title}
+            />
+          )}
 
+          <div className="hero-overlay">
 
-}
+            <Link
+              to="/publications"
+              className="back-link"
+            >
+              <FaArrowLeft />
+              Back to Publications
+            </Link>
 
-return (
-<> <Navbar />
+            <span className="publication-tag">
+              {publication.category}
+            </span>
 
+            <h1>
+              {publication.title}
+            </h1>
 
-  <section className="publication-details">
+            <div className="hero-meta">
 
-    <Link
-      to="/publications"
-      className="back-btn"
-    >
-      <FaArrowLeft />
-      Back to Publications
-    </Link>
+              <span>
+                <FaFolderOpen />
+                {publication.category}
+              </span>
 
-    {publication.image_url && (
-      <img
-        src={publication.image_url}
-        alt={publication.title}
-      />
-    )}
+              <span>
+                <FaCalendarAlt />
+                {publication.publication_year}
+              </span>
 
-    <h1>
-      {publication.title}
-    </h1>
+              <span>
+                <FaBookOpen />
+                {publication.status}
+              </span>
 
-    <div className="publication-meta">
+            </div>
 
-      <span>
-        <FaFolderOpen />
-        {publication.category}
-      </span>
+          </div>
 
-      <span>
-        <FaCalendarAlt />
-        {publication.publication_year}
-      </span>
+        </div>
 
-      <span>
-        <FaBookOpen />
-        {publication.status}
-      </span>
+        <div className="publication-wrapper">
 
-    </div>
+          <div className="publication-main">
 
-    <p className="publication-description">
-      {publication.description}
-    </p>
+            <div className="publication-summary">
 
-    <div className="publication-content">
-      {publication.content}
-    </div>
+              <FaQuoteLeft />
 
-  </section>
+              <p>
+                {publication.description}
+              </p>
 
-  <Footer />
-</>
+            </div>
 
+            <article className="publication-content">
 
-);
+              <h2>
+                Publication Content
+              </h2>
+
+              <div>
+                {publication.content}
+              </div>
+
+            </article>
+
+          </div>
+
+          <aside className="publication-sidebar">
+
+            <div className="sidebar-card">
+
+              <h3>
+                Publication Details
+              </h3>
+
+              <ul>
+
+                <li>
+                  <strong>Category</strong>
+                  <span>
+                    {publication.category}
+                  </span>
+                </li>
+
+                <li>
+                  <strong>Year</strong>
+                  <span>
+                    {publication.publication_year}
+                  </span>
+                </li>
+
+                <li>
+                  <strong>Status</strong>
+                  <span>
+                    {publication.status}
+                  </span>
+                </li>
+
+              </ul>
+
+            </div>
+
+            <button className="download-btn">
+              <FaDownload />
+              Download PDF
+            </button>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+      <Footer />
+    </>
+  );
 }
 
 export default PublicationDetails;
