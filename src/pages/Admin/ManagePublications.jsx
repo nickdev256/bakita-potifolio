@@ -6,7 +6,6 @@ import AdminHeader from "../../components/AdminHeader/AdminHeader";
 import "./ManagePublications.css";
 
 function ManagePublications() {
-
 const [formData, setFormData] = useState({
 title: "",
 description: "",
@@ -21,6 +20,10 @@ featured: false,
 
 const [loading, setLoading] = useState(false);
 
+const API_URL =
+import.meta.env.VITE_API_URL ||
+"http://localhost:5000";
+
 const handleChange = (e) => {
 const {
 name,
@@ -30,79 +33,85 @@ checked,
 } = e.target;
 
 ```
-setFormData({
-  ...formData,
+setFormData((prev) => ({
+  ...prev,
   [name]:
     type === "checkbox"
       ? checked
       : value,
-});
+}));
 ```
 
+};
+
+const resetForm = () => {
+setFormData({
+title: "",
+description: "",
+category: "",
+image_url: "",
+content: "",
+publication_year: "",
+pages: "",
+status: "Published",
+featured: false,
+});
 };
 
 const handleSubmit = async (e) => {
 e.preventDefault();
 
-```
+
 try {
   setLoading(true);
 
   const response = await fetch(
-    "http://localhost:5000/api/publications",
+    `${API_URL}/api/publications`,
     {
       method: "POST",
       headers: {
         "Content-Type":
           "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(
+        formData
+      ),
     }
   );
 
   const data =
     await response.json();
 
-  if (response.ok) {
-
-    alert(
-      "Publication created successfully!"
+  if (!response.ok) {
+    throw new Error(
+      data.message ||
+        "Failed to create publication"
     );
-
-    setFormData({
-      title: "",
-      description: "",
-      category: "",
-      image_url: "",
-      content: "",
-      publication_year: "",
-      pages: "",
-      status: "Published",
-      featured: false,
-    });
-
-  } else {
-
-    alert(data.message);
-
   }
 
+  alert(
+    "Publication created successfully!"
+  );
+
+  resetForm();
+
 } catch (error) {
+  console.error(error);
 
-  alert("Server error");
-
+  alert(
+    error.message ||
+      "Something went wrong."
+  );
 } finally {
-
   setLoading(false);
-
 }
-```
+
 
 };
 
 return ( <div className="admin-dashboard">
 
-```
+
   <AdminSidebar />
 
   <main className="admin-content">
@@ -141,7 +150,9 @@ return ( <div className="admin-dashboard">
           type="number"
           name="publication_year"
           placeholder="Publication Year"
-          value={formData.publication_year}
+          value={
+            formData.publication_year
+          }
           onChange={handleChange}
         />
 
@@ -199,12 +210,14 @@ return ( <div className="admin-dashboard">
         </option>
       </select>
 
-      <label>
+      <label className="checkbox-label">
 
         <input
           type="checkbox"
           name="featured"
-          checked={formData.featured}
+          checked={
+            formData.featured
+          }
           onChange={handleChange}
         />
 
