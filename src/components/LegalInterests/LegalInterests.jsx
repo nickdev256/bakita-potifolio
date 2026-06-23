@@ -3,7 +3,7 @@ import "./LegalInterests.css";
 function LegalInterests() {
 return ( <section className="legal-interests">
 
-```
+
   <div className="section-title">
     <span>LEGAL INTERESTS</span>
     <h2>Areas of Legal Focus</h2>
