@@ -1,6 +1,11 @@
 
 import { supabase } from "../config/supabase.js";
 
+import {
+  sendNewsletterNotification,
+  sendWelcomeNewsletterEmail,
+} from "../services/emailService.js";
+
 export const subscribe = async (
   req,
   res
@@ -12,17 +17,29 @@ export const subscribe = async (
     const { data, error } =
       await supabase
         .from("newsletter")
-        .insert([{ email }]);
+        .insert([{ email }])
+        .select();
 
     if (error) throw error;
 
+    await sendNewsletterNotification(
+      email
+    );
+
+    await sendWelcomeNewsletterEmail(
+      email
+    );
+
     res.status(201).json({
       success: true,
-      message: "Subscribed successfully",
+      message:
+        "Subscribed successfully",
       data,
     });
 
   } catch (error) {
+
+    console.error(error);
 
     res.status(500).json({
       success: false,

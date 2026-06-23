@@ -1,0 +1,181 @@
+
+.admin-dashboard{
+display:flex;
+min-height:100vh;
+background:#f8f5f0;
+}
+
+.admin-sidebar{
+width:260px;
+background:#111;
+color:#fff;
+padding:40px 25px;
+}
+
+.admin-sidebar h2{
+margin-bottom:40px;
+font-size:1.6rem;
+}
+
+.admin-sidebar ul{
+list-style:none;
+}
+
+.admin-sidebar li{
+padding:15px 0;
+cursor:pointer;
+border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.admin-content{
+flex:1;
+padding:50px;
+}
+
+.admin-header h1{
+font-size:2.5rem;
+margin-bottom:10px;
+}
+
+.admin-header p{
+color:#666;
+margin-bottom:40px;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.stat-card{
+background:#fff;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+text-align:center;
+}
+
+.stat-card svg{
+font-size:2rem;
+margin-bottom:15px;
+color:#b58b45;
+}
+
+.quick-actions{
+margin-top:50px;
+background:#fff;
+padding:30px;
+border-radius:20px;
+}
+
+.quick-actions h2{
+margin-bottom:20px;
+}
+
+.quick-actions button{
+margin-right:15px;
+padding:12px 24px;
+border:none;
+background:#b58b45;
+color:white;
+cursor:pointer;
+border-radius:10px;
+}
+
+
+.publication-form{
+display:flex;
+flex-direction:column;
+gap:18px;
+max-width:900px;
+background:#fff;
+padding:35px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.publication-form input,
+.publication-form textarea,
+.publication-form select{
+padding:14px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:1rem;
+}
+
+.publication-form textarea{
+resize:vertical;
+}
+
+.publication-form button{
+padding:14px;
+background:#b58b45;
+color:white;
+border:none;
+border-radius:10px;
+font-weight:600;
+cursor:pointer;
+}
+
+
+.subscribers-card{
+background:#fff;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+overflow-x:auto;
+}
+
+.subscribers-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.subscribers-table th{
+background:#b58b45;
+color:#fff;
+padding:15px;
+text-align:left;
+}
+
+.subscribers-table td{
+padding:15px;
+border-bottom:1px solid #eee;
+}
+
+.subscribers-table tr:hover{
+background:#f8f5f0;
+}
+
+
+.messages-card{
+background:#fff;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+overflow-x:auto;
+}
+
+.messages-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.messages-table th{
+background:#0f172a;
+color:#fff;
+padding:15px;
+text-align:left;
+}
+
+.messages-table td{
+padding:15px;
+border-bottom:1px solid #eee;
+vertical-align:top;
+}
+
+.messages-table tr:hover{
+background:#f8f5f0;
+}
+

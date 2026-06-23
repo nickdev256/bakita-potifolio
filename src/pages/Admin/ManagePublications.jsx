@@ -1,0 +1,234 @@
+
+import { useState } from "react";
+import AdminSidebar from "../../components/AdminSidebar/AdminSidebar";
+import AdminHeader from "../../components/AdminHeader/AdminHeader";
+import "./AdminDashboard.css";
+
+function ManagePublications() {
+
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    category: "",
+    image_url: "",
+    content: "",
+    publication_year: "",
+    pages: "",
+    status: "Published",
+    featured: false,
+  });
+
+  const [loading, setLoading] =
+    useState(false);
+
+  const handleChange = (e) => {
+
+    const {
+      name,
+      value,
+      type,
+      checked,
+    } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]:
+        type === "checkbox"
+          ? checked
+          : value,
+    });
+  };
+
+  const handleSubmit = async (
+    e
+  ) => {
+
+    e.preventDefault();
+
+    try {
+
+      setLoading(true);
+
+      const response =
+        await fetch(
+          "http://localhost:5000/api/publications",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type":
+                "application/json",
+            },
+            body: JSON.stringify(
+              formData
+            ),
+          }
+        );
+
+      const data =
+        await response.json();
+
+      if (response.ok) {
+
+        alert(
+          "Publication created successfully!"
+        );
+
+        setFormData({
+          title: "",
+          description: "",
+          category: "",
+          image_url: "",
+          content: "",
+          publication_year: "",
+          pages: "",
+          status: "Published",
+          featured: false,
+        });
+
+      } else {
+
+        alert(
+          data.message
+        );
+
+      }
+
+    } catch (error) {
+
+      alert(
+        "Server error"
+      );
+
+    } finally {
+
+      setLoading(false);
+
+    }
+  };
+
+  return (
+    <div className="admin-content">
+
+      <div className="admin-header">
+
+        <h1>
+          Manage Publications
+        </h1>
+
+        <p>
+          Publish legal research,
+          articles and academic work.
+        </p>
+
+      </div>
+
+      <form
+        className="publication-form"
+        onSubmit={handleSubmit}
+      >
+
+        <input
+          type="text"
+          name="title"
+          placeholder="Publication Title"
+          value={formData.title}
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          type="text"
+          name="category"
+          placeholder="Category"
+          value={formData.category}
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          type="text"
+          name="image_url"
+          placeholder="Image URL"
+          value={formData.image_url}
+          onChange={handleChange}
+        />
+
+        <input
+          type="number"
+          name="publication_year"
+          placeholder="Publication Year"
+          value={formData.publication_year}
+          onChange={handleChange}
+        />
+
+        <input
+          type="number"
+          name="pages"
+          placeholder="Pages"
+          value={formData.pages}
+          onChange={handleChange}
+        />
+
+        <textarea
+          name="description"
+          placeholder="Short Description"
+          value={formData.description}
+          onChange={handleChange}
+          rows="4"
+          required
+        />
+
+        <textarea
+          name="content"
+          placeholder="Full Publication Content"
+          value={formData.content}
+          onChange={handleChange}
+          rows="12"
+          required
+        />
+
+        <select
+          name="status"
+          value={formData.status}
+          onChange={handleChange}
+        >
+          <option>
+            Published
+          </option>
+
+          <option>
+            Draft
+          </option>
+        </select>
+
+        <label>
+
+          <input
+            type="checkbox"
+            name="featured"
+            checked={
+              formData.featured
+            }
+            onChange={handleChange}
+          />
+
+          Featured Publication
+
+        </label>
+
+        <button
+          type="submit"
+        >
+          {loading
+            ? "Publishing..."
+            : "Publish"}
+        </button>
+
+      </form>
+
+    </div>
+  );
+}
+
+export default ManagePublications;
+

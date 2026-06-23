@@ -1,19 +1,83 @@
+
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
+import {
+  Link,
+  useNavigate,
+} from "react-router-dom";
+
+import { HashLink } from "react-router-hash-link";
+
+import {
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
+
 import "./Navbar.css";
 
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+
+  const [menuOpen, setMenuOpen] =
+    useState(false);
+
+  const [clickCount, setClickCount] =
+    useState(0);
+
+  const navigate =
+    useNavigate();
 
   const closeMenu = () => {
     setMenuOpen(false);
   };
 
+  const handleLogoClick = () => {
+
+    const newCount =
+      clickCount + 1;
+
+    setClickCount(newCount);
+
+    if (newCount === 3) {
+
+      const pin =
+        prompt(
+          "Enter Admin PIN"
+        );
+
+      if (pin === "1234") {
+
+        navigate("/admin");
+
+      } else {
+
+        alert(
+          "Incorrect PIN"
+        );
+
+      }
+
+      setClickCount(0);
+    }
+
+    setTimeout(() => {
+
+      setClickCount(0);
+
+    }, 1000);
+  };
+
   return (
     <header className="navbar">
-      
-      <div className="logo-section">
+
+      <div
+        className="logo-section"
+        onClick={
+          handleLogoClick
+        }
+        style={{
+          cursor: "pointer",
+        }}
+      >
+
         <img
           src="/law-logo.png"
           alt="Bakita Lydia Logo"
@@ -21,71 +85,121 @@ function Navbar() {
         />
 
         <div className="logo-text">
-          <h2>BAKITA LYDIA ELIZABETH</h2>
+
+          <h2>
+            BAKITA LYDIA ELIZABETH
+          </h2>
 
           <p>
             LAW STUDENT • RESEARCHER • ADVOCATE
           </p>
+
         </div>
+
       </div>
 
-      {/* Mobile Menu Button */}
       <div
         className="menu-toggle"
-        onClick={() => setMenuOpen(!menuOpen)}
+        onClick={() =>
+          setMenuOpen(
+            !menuOpen
+          )
+        }
       >
-        {menuOpen ? <FaTimes /> : <FaBars />}
+
+        {menuOpen
+          ? <FaTimes />
+          : <FaBars />}
+
       </div>
 
-      {/* Navigation */}
-      <nav className={menuOpen ? "active" : ""}>
+      <nav
+        className={
+          menuOpen
+            ? "active"
+            : ""
+        }
+      >
+
         <ul className="nav-links">
 
           <li>
-            <Link to="/" onClick={closeMenu}>
+            <Link
+              to="/"
+              onClick={
+                closeMenu
+              }
+            >
               Home
             </Link>
           </li>
 
           <li>
-            <Link to="/about" onClick={closeMenu}>
+            <Link
+              to="/about"
+              onClick={
+                closeMenu
+              }
+            >
               About
             </Link>
           </li>
 
           <li>
-            <Link to="/academic" onClick={closeMenu}>
+            <Link
+              to="/academic"
+              onClick={
+                closeMenu
+              }
+            >
               Academic Journey
             </Link>
           </li>
 
           <li>
-            <Link to="/publications" onClick={closeMenu}>
+            <Link
+              to="/publications"
+              onClick={
+                closeMenu
+              }
+            >
               Publications
             </Link>
           </li>
 
           <li>
-            <Link to="/moot-court" onClick={closeMenu}>
+            <Link
+              to="/moot-court"
+              onClick={
+                closeMenu
+              }
+            >
               Moot Court
             </Link>
           </li>
 
           <li>
-            <Link to="/contact" onClick={closeMenu}>
+            <Link
+              to="/contact"
+              onClick={
+                closeMenu
+              }
+            >
               Contact
             </Link>
           </li>
 
         </ul>
+
       </nav>
 
-      <Link
-        to="/contact"
+      <HashLink
+        smooth
+        to="/contact#contact-form"
         className="cv-btn"
       >
         Let's Connect
-      </Link>
+      </HashLink>
 
     </header>
   );

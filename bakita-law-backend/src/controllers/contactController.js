@@ -1,6 +1,11 @@
 
 import { supabase } from "../config/supabase.js";
 
+import {
+  sendContactEmail,
+  sendConfirmationEmail,
+} from "../services/emailService.js";
+
 export const createContact = async (
   req,
   res
@@ -24,9 +29,28 @@ export const createContact = async (
             subject,
             message,
           },
-        ]);
+        ])
+        .select();
 
     if (error) throw error;
+
+    // Notify Bakita
+
+    await sendContactEmail({
+      full_name,
+      email,
+      subject,
+      message,
+    });
+
+    // Send confirmation to visitor
+
+    await sendConfirmationEmail({
+      full_name,
+      email,
+      subject,
+      message,
+    });
 
     res.status(201).json({
       success: true,
@@ -37,9 +61,16 @@ export const createContact = async (
 
   } catch (error) {
 
+    console.error(
+      "Contact Error:",
+      error
+    );
+
     res.status(500).json({
       success: false,
-      message: error.message,
+      message:
+        error.message ||
+        "Something went wrong",
     });
 
   }
