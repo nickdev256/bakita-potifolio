@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+.stats-section{
+padding:120px 8%;
+background:#f8f5f0;
+}
+
+.stats-header{
+text-align:center;
+max-width:900px;
+margin:auto;
+}
+
+.stats-header span{
+color:#c9a227;
+letter-spacing:6px;
+font-size:14px;
+font-weight:600;
+}
+
+.stats-header h2{
+margin-top:20px;
+font-size:4rem;
+line-height:1.1;
+font-family:"Cormorant Garamond",serif;
+color:#111827;
+}
+
+.stats-header h2 span{
+color:#c9a227;
+}
+
+.stats-header p{
+margin-top:20px;
+color:#6b7280;
+font-size:18px;
+line-height:1.8;
+}
+
+.stats-grid{
+margin-top:80px;
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+}
+
+.stat-card{
+background:white;
+
+padding:40px 25px;
+
+text-align:center;
+
+border-radius:25px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.06);
+
+transition:.4s;
+position:relative;
+
+overflow:hidden;
+}
+
+.stat-card::after{
+content:"";
+
+position:absolute;
+bottom:0;
+left:0;
+
+width:100%;
+height:5px;
+
+background:#c9a227;
+}
+
+.stat-card:hover{
+transform:translateY(-10px);
+}
+
+.icon-circle{
+width:90px;
+height:90px;
+
+margin:auto;
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:#f8f5f0;
+
+color:#c9a227;
+
+font-size:34px;
+}
+
+.stat-card h3{
+margin-top:25px;
+
+font-size:4rem;
+
+font-family:"Cormorant Garamond",serif;
+
+color:#c9a227;
+}
+
+.stat-card h4{
+margin-top:10px;
+
+font-size:20px;
+color:#111827;
+}
+
+.stat-card p{
+margin-top:20px;
+
+color:#6b7280;
+line-height:1.8;
+}
+
+.quote-banner{
+margin-top:70px;
+
+background:linear-gradient(
+135deg,
+#0f172a,
+#111827
+);
+
+color:white;
+
+padding:45px;
+
+border-radius:25px;
+
+display:flex;
+align-items:center;
+gap:30px;
+}
+
+.quote-icon{
+width:90px;
+height:90px;
+
+border-radius:50%;
+
+border:1px solid #c9a227;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+color:#c9a227;
+
+font-size:36px;
+}
+
+.quote-banner p{
+font-size:28px;
+font-family:"Cormorant Garamond",serif;
+line-height:1.6;
+}
+
+@media(max-width:1100px){
+
+.stats-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:768px){
+
+.stats-grid{
+grid-template-columns:1fr;
+}
+
+.stats-header h2{
+font-size:2.8rem;
+}
+
+.quote-banner{
+flex-direction:column;
+text-align:center;
+}
+
+.quote-banner p{
+font-size:22px;
+}
+
+}
