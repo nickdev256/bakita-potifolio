@@ -1,0 +1,107 @@
+.admin-content {
+flex: 1;
+padding: 40px;
+background: #f8fafc;
+min-height: 100vh;
+}
+
+.subscriber-stats {
+margin-bottom: 25px;
+}
+
+.stat-card {
+background: white;
+border-radius: 18px;
+padding: 25px;
+display: flex;
+align-items: center;
+gap: 18px;
+box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.stat-card svg {
+font-size: 2rem;
+color: #8b6f47;
+}
+
+.stat-card h2 {
+font-size: 1.8rem;
+margin-bottom: 4px;
+}
+
+.stat-card p {
+color: #6b7280;
+}
+
+.search-box {
+background: white;
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 14px 18px;
+border-radius: 14px;
+margin-bottom: 25px;
+box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+}
+
+.search-box input {
+border: none;
+outline: none;
+width: 100%;
+font-size: 1rem;
+}
+
+.subscribers-card {
+background: white;
+border-radius: 20px;
+overflow: hidden;
+box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.subscribers-table {
+width: 100%;
+border-collapse: collapse;
+}
+
+.subscribers-table thead {
+background: #8b6f47;
+color: white;
+}
+
+.subscribers-table th,
+.subscribers-table td {
+padding: 18px;
+text-align: left;
+}
+
+.subscribers-table tbody tr {
+border-bottom: 1px solid #e5e7eb;
+}
+
+.subscribers-table tbody tr:hover {
+background: #f9fafb;
+}
+
+.empty-state {
+padding: 50px;
+text-align: center;
+color: #6b7280;
+font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+
+.admin-content {
+padding: 20px;
+}
+
+.subscribers-table {
+font-size: 0.9rem;
+}
+
+.subscribers-table th,
+.subscribers-table td {
+padding: 12px;
+}
+
+}

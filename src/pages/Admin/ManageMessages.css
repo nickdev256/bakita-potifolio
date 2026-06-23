@@ -1,0 +1,129 @@
+.admin-content {
+flex: 1;
+padding: 40px;
+background: #f8fafc;
+min-height: 100vh;
+}
+
+.subscriber-stats {
+margin-bottom: 25px;
+}
+
+.stat-card {
+background: #ffffff;
+border-radius: 18px;
+padding: 24px;
+display: flex;
+align-items: center;
+gap: 18px;
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card svg {
+font-size: 2rem;
+color: #8b6f47;
+}
+
+.stat-card h2 {
+font-size: 1.8rem;
+color: #1f2937;
+margin-bottom: 4px;
+}
+
+.stat-card p {
+color: #6b7280;
+}
+
+.search-box {
+background: #ffffff;
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 14px 18px;
+border-radius: 14px;
+margin-bottom: 25px;
+box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+.search-box svg {
+color: #8b6f47;
+}
+
+.search-box input {
+border: none;
+outline: none;
+width: 100%;
+font-size: 1rem;
+background: transparent;
+}
+
+.messages-card {
+background: #ffffff;
+border-radius: 20px;
+overflow: hidden;
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.messages-table {
+width: 100%;
+border-collapse: collapse;
+}
+
+.messages-table thead {
+background: #8b6f47;
+color: white;
+}
+
+.messages-table th,
+.messages-table td {
+padding: 18px;
+text-align: left;
+vertical-align: top;
+}
+
+.messages-table tbody tr {
+border-bottom: 1px solid #e5e7eb;
+}
+
+.messages-table tbody tr:hover {
+background: #f9fafb;
+}
+
+.messages-table td:last-child {
+max-width: 400px;
+white-space: normal;
+line-height: 1.6;
+}
+
+.empty-state {
+padding: 60px;
+text-align: center;
+color: #6b7280;
+font-size: 1.1rem;
+}
+
+@media (max-width: 1024px) {
+.messages-card {
+overflow-x: auto;
+}
+
+.messages-table {
+min-width: 900px;
+}
+}
+
+@media (max-width: 768px) {
+.admin-content {
+padding: 20px;
+}
+
+.stat-card {
+padding: 18px;
+}
+
+.messages-table th,
+.messages-table td {
+padding: 12px;
+font-size: 0.9rem;
+}
+}
