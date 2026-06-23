@@ -10,7 +10,7 @@ const [formData, setFormData] = useState({
 title: "",
 description: "",
 category: "",
-image_url: "",
+image: null,
 content: "",
 publication_year: "",
 pages: "",
@@ -30,9 +30,18 @@ name,
 value,
 type,
 checked,
+files,
 } = e.target;
 
-```
+
+if (type === "file") {
+  setFormData((prev) => ({
+    ...prev,
+    image: files[0],
+  }));
+  return;
+}
+
 setFormData((prev) => ({
   ...prev,
   [name]:
@@ -40,7 +49,7 @@ setFormData((prev) => ({
       ? checked
       : value,
 }));
-```
+
 
 };
 
@@ -49,7 +58,7 @@ setFormData({
 title: "",
 description: "",
 category: "",
-image_url: "",
+image: null,
 content: "",
 publication_year: "",
 pages: "",
@@ -65,19 +74,64 @@ e.preventDefault();
 try {
   setLoading(true);
 
-  const response = await fetch(
-    `${API_URL}/api/publications`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type":
-          "application/json",
-      },
-      body: JSON.stringify(
-        formData
-      ),
-    }
+  const submitData =
+    new FormData();
+
+  submitData.append(
+    "title",
+    formData.title
   );
+
+  submitData.append(
+    "description",
+    formData.description
+  );
+
+  submitData.append(
+    "category",
+    formData.category
+  );
+
+  submitData.append(
+    "content",
+    formData.content
+  );
+
+  submitData.append(
+    "publication_year",
+    formData.publication_year
+  );
+
+  submitData.append(
+    "pages",
+    formData.pages
+  );
+
+  submitData.append(
+    "status",
+    formData.status
+  );
+
+  submitData.append(
+    "featured",
+    formData.featured
+  );
+
+  if (formData.image) {
+    submitData.append(
+      "image",
+      formData.image
+    );
+  }
+
+  const response =
+    await fetch(
+      `${API_URL}/api/publications`,
+      {
+        method: "POST",
+        body: submitData,
+      }
+    );
 
   const data =
     await response.json();
@@ -160,13 +214,20 @@ return ( <div className="admin-dashboard">
 
       <div className="form-row">
 
-        <input
-          type="text"
-          name="image_url"
-          placeholder="Cover Image URL"
-          value={formData.image_url}
-          onChange={handleChange}
-        />
+        <div className="file-upload">
+
+          <label>
+            Cover Image
+          </label>
+
+          <input
+            type="file"
+            name="image"
+            accept="image/*"
+            onChange={handleChange}
+          />
+
+        </div>
 
         <input
           type="number"
