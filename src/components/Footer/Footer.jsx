@@ -141,7 +141,7 @@ function Footer() {
           <div className="social-icons">
 
             <a
-              href="#"
+              href="https://www.linkedin.com/in/bakita-lydia-elizabeth-b94267419/"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
