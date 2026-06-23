@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
 import {
 FaTachometerAlt,
 FaBookOpen,
@@ -14,9 +13,16 @@ FaSignOutAlt,
 import "./AdminSidebar.css";
 
 function AdminSidebar() {
+const messageCount = 5;
+const subscriberCount = 120;
+
+const handleLogout = () => {
+alert("Logout functionality coming soon");
+};
+
 return ( <aside className="admin-sidebar">
 
-
+```
   <div className="sidebar-logo">
     <h2>Bakita Admin</h2>
     <p>Law Portfolio CMS</p>
@@ -70,6 +76,10 @@ return ( <aside className="admin-sidebar">
     >
       <FaUsers />
       <span>Subscribers</span>
+
+      <span className="badge">
+        {subscriberCount}
+      </span>
     </NavLink>
 
     <NavLink
@@ -82,6 +92,10 @@ return ( <aside className="admin-sidebar">
     >
       <FaEnvelope />
       <span>Messages</span>
+
+      <span className="badge">
+        {messageCount}
+      </span>
     </NavLink>
 
     <NavLink
@@ -112,7 +126,10 @@ return ( <aside className="admin-sidebar">
 
   <div className="sidebar-footer">
 
-    <button className="logout-btn">
+    <button
+      className="logout-btn"
+      onClick={handleLogout}
+    >
       <FaSignOutAlt />
       Logout
     </button>
@@ -120,7 +137,6 @@ return ( <aside className="admin-sidebar">
   </div>
 
 </aside>
-
 );
 }
 
