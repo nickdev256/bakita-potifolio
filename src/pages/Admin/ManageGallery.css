@@ -1,0 +1,153 @@
+.admin-content {
+flex: 1;
+padding: 40px;
+background: #f8fafc;
+min-height: 100vh;
+}
+
+.gallery-stat-card {
+background: #ffffff;
+border-radius: 18px;
+padding: 24px;
+display: flex;
+align-items: center;
+gap: 18px;
+margin-bottom: 25px;
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-stat-card svg {
+font-size: 2rem;
+color: #8b6f47;
+}
+
+.gallery-stat-card h2 {
+font-size: 1.8rem;
+color: #1f2937;
+}
+
+.gallery-stat-card p {
+color: #6b7280;
+}
+
+.gallery-form {
+background: #ffffff;
+padding: 25px;
+border-radius: 18px;
+display: grid;
+grid-template-columns: 1fr 1fr 2fr auto;
+gap: 15px;
+margin-bottom: 30px;
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-form input {
+padding: 14px 16px;
+border: 1px solid #d1d5db;
+border-radius: 12px;
+font-size: 1rem;
+outline: none;
+}
+
+.gallery-form input:focus {
+border-color: #8b6f47;
+}
+
+.gallery-form button {
+border: none;
+background: #8b6f47;
+color: white;
+border-radius: 12px;
+cursor: pointer;
+padding: 14px 20px;
+font-weight: 600;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.gallery-form button:hover {
+background: #755c39;
+}
+
+.gallery-grid {
+display: grid;
+grid-template-columns: repeat(
+auto-fill,
+minmax(280px, 1fr)
+);
+gap: 25px;
+}
+
+.gallery-card {
+background: #ffffff;
+border-radius: 20px;
+overflow: hidden;
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+transition: 0.3s;
+}
+
+.gallery-card:hover {
+transform: translateY(-5px);
+}
+
+.gallery-card img {
+width: 100%;
+height: 240px;
+object-fit: cover;
+}
+
+.gallery-info {
+padding: 18px;
+}
+
+.gallery-info h3 {
+margin-bottom: 8px;
+color: #1f2937;
+}
+
+.gallery-info p {
+color: #6b7280;
+margin-bottom: 15px;
+}
+
+.gallery-info button {
+width: 100%;
+border: none;
+background: #dc2626;
+color: white;
+padding: 12px;
+border-radius: 10px;
+cursor: pointer;
+display: flex;
+justify-content: center;
+gap: 10px;
+font-weight: 600;
+}
+
+.gallery-info button:hover {
+background: #b91c1c;
+}
+
+.loading {
+text-align: center;
+padding: 60px;
+color: #6b7280;
+font-size: 1.1rem;
+}
+
+@media (max-width: 1024px) {
+.gallery-form {
+grid-template-columns: 1fr;
+}
+}
+
+@media (max-width: 768px) {
+.admin-content {
+padding: 20px;
+}
+
+.gallery-card img {
+height: 220px;
+}
+}

@@ -14,6 +14,8 @@ import AdminDashboard from "../pages/Admin/AdminDashboard";
 import ManagePublications from "../pages/Admin/ManagePublications";
 import ManageSubscribers from "../pages/Admin/ManageSubscribers";
 import ManageMessages from "../pages/Admin/ManageMessages";
+import ManageGallery from "../pages/Admin/ManageGallery";
+
 
 function AppRoutes() {
   return (
@@ -80,6 +82,11 @@ function AppRoutes() {
         path="/admin/messages"
         element={<ManageMessages />}
       />
+
+      <Route
+  path="/admin/gallery"
+  element={<ManageGallery />}
+/>
 
     </Routes>
   );
