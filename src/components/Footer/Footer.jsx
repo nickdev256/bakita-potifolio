@@ -1,168 +1,223 @@
+
+import { NavLink } from "react-router-dom";
+
 import {
-FaLinkedinIn,
-FaInstagram,
-FaEnvelope,
-FaPhoneAlt,
-FaMapMarkerAlt,
-FaBalanceScale,
-FaChevronRight
+  FaLinkedinIn,
+  FaInstagram,
+  FaEnvelope,
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+  FaBalanceScale,
+  FaChevronRight,
+  FaYoutube,
 } from "react-icons/fa";
+
+import {
+  FaXTwitter,
+  FaTiktok,
+} from "react-icons/fa6";
 
 import "./Footer.css";
 
 function Footer() {
-return ( <footer className="footer">
+  return (
+    <footer className="footer">
 
+      <div className="footer-top">
 
-  <div className="footer-top">
+        {/* BRAND */}
 
-    {/* LEFT */}
+        <div className="footer-brand">
 
-    <div className="footer-brand">
+          <div className="footer-logo">
+            <FaBalanceScale />
+          </div>
 
-      <div className="footer-logo">
-        <FaBalanceScale />
-      </div>
+          <h2>
+            BAKITA
+            <br />
+            LYDIA ELIZABETH
+          </h2>
 
-      <h2>
-        BAKITA
-        <br />
-        LYDIA ELIZABETH
-      </h2>
+          <span>
+            LAW STUDENT • RESEARCHER • ADVOCATE
+          </span>
 
-      <span>
-        LAW STUDENT • RESEARCHER • ADVOCATE
-      </span>
+          <div className="gold-line"></div>
 
-      <div className="gold-line"></div>
+          <p>
+            Aspiring advocate dedicated to promoting
+            justice, upholding integrity and creating
+            meaningful impact through the law.
+          </p>
 
-      <p>
-        Aspiring advocate dedicated to promoting
-        justice, upholding integrity and creating
-        meaningful impact through the law.
-      </p>
+        </div>
 
-    </div>
+        {/* QUICK LINKS */}
 
-    {/* LINKS */}
+        <div className="footer-links">
 
-    <div className="footer-links">
+          <h3>Quick Links</h3>
 
-      <h3>Quick Links</h3>
+          <NavLink to="/">
+            <FaChevronRight />
+            Home
+          </NavLink>
 
-      <a href="/">
-        <FaChevronRight /> Home
-      </a>
+          <NavLink to="/about">
+            <FaChevronRight />
+            About
+          </NavLink>
 
-      <a href="/about">
-        <FaChevronRight /> About
-      </a>
+          <NavLink to="/academic">
+            <FaChevronRight />
+            Journey
+          </NavLink>
 
-      <a href="/academic">
-        <FaChevronRight /> Journey
-      </a>
+          <NavLink to="/publications">
+            <FaChevronRight />
+            Publications
+          </NavLink>
 
-      <a href="/publications">
-        <FaChevronRight /> Publications
-      </a>
+          <NavLink to="/contact">
+            <FaChevronRight />
+            Contact
+          </NavLink>
 
-      <a href="/contact">
-        <FaChevronRight /> Contact
-      </a>
+        </div>
 
-    </div>
+        {/* CONNECT */}
 
-    {/* CONNECT */}
+        <div className="footer-connect">
 
-    <div className="footer-connect">
+          <h3>Let's Connect</h3>
 
-      <h3>Let's Connect</h3>
+          <p>
+            I'd love to hear from you.
+            Let's connect and create
+            something impactful together.
+          </p>
 
-      <p>
-        I'd love to hear from you.
-        Let's connect and create
-        something impactful together.
-      </p>
+          <a
+            href="mailto:info.bakitalydiaelizabeth@gmail.com"
+            className="footer-btn"
+          >
+            Send Message
+          </a>
 
-      <button>
-        Send Message
-      </button>
-
-    </div>
-
-  </div>
-
-  {/* MIDDLE */}
-
-  <div className="footer-middle">
-
-    <div className="contact-info">
-
-      <h3>Contact</h3>
-
-      <p>
-        <FaEnvelope />
-        info.bakitalydiaelizabeth@gmail.com
-      </p>
-
-      <p>
-        <FaPhoneAlt />
-        0700225368
-      </p>
-
-      <p>
-        <FaMapMarkerAlt />
-        Mukono, Uganda
-      </p>
-
-    </div>
-
-    <div className="social-area">
-
-      <h3>Follow Me</h3>
-
-      <div className="social-icons">
-
-        <a href="#">
-          <FaLinkedinIn />
-        </a>
-
-        <a href="#">
-          <FaInstagram />
-        </a>
-
-        <a href="#">
-          <FaEnvelope />
-        </a>
+        </div>
 
       </div>
 
-    </div>
+      {/* CONTACT SECTION */}
 
-  </div>
+      <div className="footer-middle">
 
-  {/* BOTTOM */}
+        <div className="contact-info">
 
-  <div className="footer-bottom">
+          <h3>Contact</h3>
 
-    <FaBalanceScale className="bottom-icon" />
+          <p>
+            <FaEnvelope />
+            info.bakitalydiaelizabeth@gmail.com
+          </p>
 
-    <p>
-      © 2026 Bakita Lydia Elizabeth.
-      All Rights Reserved.
-    </p>
+          <p>
+            <FaPhoneAlt />
+            0700225368
+          </p>
 
-    <div className="developer-credit">
-      Designed & Developed by
-      <span> ETH TECH SOLUTIONS</span>
-    </div>
+          <p>
+            <FaMapMarkerAlt />
+            Mukono, Uganda
+          </p>
 
-  </div>
+        </div>
 
-</footer>
+        <div className="social-area">
 
+          <h3>Follow Me</h3>
 
-);
+          <div className="social-icons">
+
+            <a
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedinIn />
+            </a>
+            <a
+              href="https://www.youtube.com/@BakitaLydiaElizabeth"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Youtube"
+            >
+              <FaYoutube />
+            </a>
+
+            <a
+              href="https://www.instagram.com/info.bakitalydiaelizabeth/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <FaInstagram />
+            </a>
+
+            <a
+              href="https://x.com/BakitalydiaEliz"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="X"
+            >
+              <FaXTwitter />
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@bakitalydiaeliz"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="TikTok"
+            >
+              <FaTiktok />
+            </a>
+
+            <a
+              href="mailto:info.bakitalydiaelizabeth@gmail.com"
+              aria-label="Email"
+            >
+              <FaEnvelope />
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* BOTTOM */}
+
+      <div className="footer-bottom">
+
+        <FaBalanceScale className="bottom-icon" />
+
+        <p>
+          © 2026 Bakita Lydia Elizabeth.
+          All Rights Reserved.
+        </p>
+
+        <div className="developer-credit">
+          Designed & Developed by
+          <span> ETH TECH SOLUTIONS</span>
+        </div>
+
+      </div>
+
+    </footer>
+  );
 }
 
 export default Footer;
+

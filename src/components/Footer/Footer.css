@@ -140,6 +140,15 @@
   margin-bottom:25px;
 }
 
+.footer-links a.active{
+  color:#c9a227;
+  font-weight:600;
+}
+
+.footer-links a.active svg{
+  color:#c9a227;
+}
+
 /* ==========================
    LINKS
 ========================== */
