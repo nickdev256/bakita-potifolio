@@ -102,7 +102,7 @@ return ( <footer className="footer">
 
       <p>
         <FaEnvelope />
-        bakitalydia175@gmail.com
+        info.bakitalydiaelizabeth@gmail.com
       </p>
 
       <p>

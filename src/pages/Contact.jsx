@@ -159,7 +159,7 @@ function Contact() {
 
             <div>
               <h3>Email</h3>
-              <p>bakitalydia175@gmail.com</p>
+              <p>info.bakitalydiaelizabeth@gmail.com</p>
             </div>
 
           </div>
