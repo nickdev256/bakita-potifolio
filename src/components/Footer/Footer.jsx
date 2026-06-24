@@ -176,7 +176,7 @@ function Footer() {
             </a>
 
             <a
-              href="https://www.tiktok.com/@bakitalydiaeliz"
+              href="https://www.tiktok.com/@lydializ14"
               target="_blank"
               rel="noreferrer"
               aria-label="TikTok"
